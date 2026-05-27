@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
+  <title>酱味大鸡</title>
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="酱味大鸡" />
+  <meta name="theme-color" content="#0b0b0b" />
+  <link rel="apple-touch-icon" href="/icon-192.png" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+
+<div id="app">
+  <!-- Sidebar -->
+  <div id="sidebar">
+    <div class="sidebar-header">
+      <h3>酱味大鸡</h3>
+      <button class="iconbtn" id="toggleSidebarBtn" title="关闭侧边栏">✕</button>
+    </div>
+
+    <!-- Characters -->
+    <div class="sidebar-section">
+      <div class="sidebar-section-header">
+        <h4>角色</h4>
+        <button class="iconbtn iconbtn-small" id="importCharBtn" title="导入角色卡">+</button>
+      </div>
+      <div id="characterList"></div>
+    </div>
+
+    <!-- Chats -->
+    <div class="sidebar-section">
+      <div class="sidebar-section-header">
+        <h4>对话</h4>
+        <div>
+          <button class="iconbtn iconbtn-small" id="newChatBtn" title="新建对话">+</button>
+          <button class="iconbtn iconbtn-small" id="exportChatBtn" title="导出对话" style="margin-left:4px;">⬇</button>
+          <button class="iconbtn iconbtn-small" id="clearChatBtn" title="清除对话" style="margin-left:4px;">🗑</button>
+        </div>
+      </div>
+      <div id="chatList"></div>
+    </div>
+  </div>
+
+  <!-- Main area -->
+  <div id="main">
+    <!-- Top bar -->
+    <div id="topbar">
+      <div class="topbar-shell">
+        <div class="topbar-inner">
+          <button class="iconbtn" id="toggleSidebarBtn2" title="侧边栏">☰</button>
+
+          <div class="pill model-pill">
+            <label for="modelSel" class="model-label">Model</label>
+            <select id="modelSel"></select>
+          </div>
+
+          <button class="iconbtn" id="personaToggle" title="😈=使用内置人物 | 😇=使用自定义">😈</button>
+          <button class="iconbtn" id="settingsBtn" title="设置">⚙️</button>
+
+          <button class="iconbtn" id="donateBtn" title="打赏 / Donate">☕</button>
+
+          <a href="https://github.com/MallocPointer/unlimited-ai" target="_blank" class="iconbtn" id="githubBtn" style="text-decoration:none;" title="GitHub">
+            <svg height="20" width="20" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat area -->
+    <div id="history">
+      <div class="chat" id="chat">
+        <div id="bottom-spacer"></div>
+      </div>
+    </div>
+
+    <!-- Composer -->
+    <div class="input-floating">
+      <div class="input-inner" id="composer">
+        <textarea id="msg" rows="1" placeholder="Message... (Enter 发送, Shift+Enter 换行)"></textarea>
+        <button id="stopBtn" style="display:none;">Stop</button>
+        <button id="continueBtn" style="display:none;" title="继续生成">▶</button>
+        <button id="regenBtn" style="display:none;" title="重新生成">↻</button>
+        <button id="sendBtn">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Donate Modal -->
+<div id="donateMask">
+  <div id="donateCard">
+    <div id="donateHead">
+      <div class="t">打赏 / Donate</div>
+      <button id="donateClose">✕</button>
+    </div>
+    <div id="donateBody">
+      <img id="donateImg" src="/donate.png" alt="WeChat Pay QR" />
+      <div id="donateNote">
+        如果真的帮助到了你，请为我打赏一杯咖啡吧，有了你的赞助，我会将服务一直运行下去的。
+        我的联系方式：admin@airymoon.com。
+        项目开源地址：https://github.com/MallocPointer/unlimited-ai
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/config.js"></script>
+<script type="module" src="/js/main.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+  }
+</script>
+</body>
+</html>
