@@ -1,7 +1,7 @@
 {
   "name": "unlimited-ai-local",
   "version": "1.0.0",
-  "description": "Asuka AI Chat - local Express version with DeepSeek & OpenAI",
+  "description": "Unlimited AI Chat - local Express version with DeepSeek & OpenAI",
   "main": "server.js",
   "type": "module",
   "scripts": {
