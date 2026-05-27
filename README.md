@@ -1,6 +1,6 @@
 # Unlimited AI
 
-本地 AI 聊天服务，支持 DeepSeek 和 OpenAI 多模型，提供 Web 界面和 OpenAI 兼容 API。
+本地 AI 聊天服务，支持 DeepSeek 和 OpenAI 多模型，提供 Web 界面和 OpenAI 兼容 API。DeepSeek效果更好
 
 ## 功能
 
